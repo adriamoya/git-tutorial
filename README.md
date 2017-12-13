@@ -279,8 +279,56 @@ git branch -d <nombre de la rama>
 git branch
 ```
 
+# Remote
 
+```shell
+git remote add origin <http/ssh del github repository>
+```
 
+```shell
+git remote
+git remote -v  # indica cual es el fetch y el push
+```
+
+# Push
+
+```shell
+git push -u origin master
+```
+
+Un `git push`no sube por defecto los tags
+```shell
+git push --tags
+```
+
+# Pull
+
+Actualiza los cambios a local:
+
+```shell
+git pull  # como ya hicimos -u en el push, no hace falta hacer git pull origin master
+```
+
+# Clone
+
+Clonar todo un repositorio
+
+```shell
+git clone <http/ssh del github repository> <nuevo nombre del repositorio en local>
+```
+
+# Fetch vs Pull
+
+Si hacemos cambios en paralelo, cuando se intente hacer un commit desde cualquier terminal aparecerá el mensaje AHEAD (ver `git status`). Por ejemplo: 
+`Your branch is ahead of 'origin/master' by 1 commit (use git push to publish your local commits). Nothing to commit, working tree clean`.
+
+Si hacemos el `push` podemos obtener errores que sugieran que el `remote` tiene cambios que no están en local y que hagamos un `git pull` antes de pushing.
+
+Si hacemos un `git pull`, git intentará hacer un merge de forma automática y podriamos perder los cambios en local. Por ello es mejor realizar un `git fetch` para actualizar en el repositorio local todos los cambios que hayan sucedido en el repositorio remoto.
+
+Si hacemos de nuevo un `git status`, seguramente seguirá diciendo que hay una diferencia por un commit y nos recomendará que hagamos un `git merge` o un `git pull`. Normalmente, `git pull` será más rápido. Si hay algún conflicto deberá ser resuelto de forma manual y, si todo va bien, aparecerá un prompt de vi para poner nombre al merge.
+
+Ahora se puede hacer un `git push` para que github tenga los cambios que hicimos en local.
 
 
 
