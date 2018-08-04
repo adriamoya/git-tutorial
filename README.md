@@ -1,5 +1,3 @@
-
-
 # Config
 ```shell
 git config --global user.name "Adria"
